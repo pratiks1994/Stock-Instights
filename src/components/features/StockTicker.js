@@ -4,7 +4,7 @@ import React from "react";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { getMarqueOptions } from "@/queries/marquee/marque.query";
+import { getMarqueOptions, getMockDataOptions } from "@/queries/marquee/marque.query";
 import Link from "next/link";
 
 const autoplayPlugin = AutoScroll({
@@ -15,11 +15,13 @@ const autoplayPlugin = AutoScroll({
     playOnInit: true,
 });
 function StockTicker() {
-    const { data } = useSuspenseQuery(getMarqueOptions());
+    // const { data } = useSuspenseQuery(getMarqueOptions());
+    const { data } = useSuspenseQuery(getMockDataOptions());
 
     return (
         <div className="sticky top-0 z-50 w-full backdrop-blur-md bg-background/40 border-b border-border">
-            <Carousel
+            {JSON.stringify(data)}
+            {/* <Carousel
                 opts={{
                     align: "start",
                     loop: true,
@@ -38,15 +40,15 @@ function StockTicker() {
                                 className="flex items-center px-6 py-2 border-r border-gray-700 min-w-fit"
                             >
                                 <div className="flex items-center space-x-3">
-                                    {/* Stock Symbol */}
+                                   
                                     <span className="font-bold text-blue-400 text-lg min-w-fit">{stock.symbol}</span>
 
-                                    {/* Price */}
+                               
                                     <span className="font-mono text-white font-semibold min-w-fit">
                                         ${stock.lastTradedPrice.toFixed(2)}
                                     </span>
 
-                                    {/* Change */}
+                             
                                     <div
                                         className={`flex items-center space-x-1 min-w-fit ${
                                             stock.change >= 0 ? "text-green-400" : "text-red-400"
@@ -67,7 +69,7 @@ function StockTicker() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-            </Carousel>
+            </Carousel> */}
         </div>
     );
 }

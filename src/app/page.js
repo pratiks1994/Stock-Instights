@@ -11,12 +11,12 @@ export default function Home() {
             <Suspense fallback={<Skeleton className="h-10 w-full rounded-md" />}>
                 <StockTicker />
             </Suspense>
-            <div className="flex flex-col gap-4 md:gap-6 bg-muted/50 rounded-xl p-4">
+            {/* <div className="flex flex-col gap-4 md:gap-6 bg-muted/50 rounded-xl p-4">
                 <InsiderTradingData />
             </div>
             <div className="flex flex-col gap-4 md:gap-6 bg-muted/50 rounded-xl p-4">
                 <ConsolidatedInsiderTradingData />
-            </div>
+            </div> */}
         </div>
     );
 }
