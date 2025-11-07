@@ -1,7 +1,5 @@
 import * as React from "react";
 import {
-    ColumnDef,
-    SortingState,
     flexRender,
     getCoreRowModel,
     getFilteredRowModel,
@@ -10,7 +8,6 @@ import {
     useReactTable,
 } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
-import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { DataTablePagination } from "../ui/DataTablePagination";
 
