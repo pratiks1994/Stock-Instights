@@ -34,7 +34,7 @@ function MapTracker() {
 
         newClient.on("message", (topic, msg) => {
             try {
-                console.log(topic);
+                console.log(msg);
                 const data = JSON.parse(msg.toString());
                 console.log(data);
 
@@ -129,7 +129,7 @@ function MapTracker() {
                         <>
                             <Marker position={position} icon={markerIcon}>
                                 <Popup>
-                                    📍 Lat: {position.lat.toFixed(5)}, Lng: {position.lng.toFixed(5)}
+                                    📍 Lat: {position.lat.toFixed(7)}, Lng: {position.lng.toFixed(7)}
                                 </Popup>
                             </Marker>
                             <RecenterMap position={position} />
