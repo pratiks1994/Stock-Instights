@@ -18,6 +18,7 @@ function MapTracker() {
     const [position, setPosition] = useState({ lat: 0, lng: 0 });
     const [status, setStatus] = useState("Disconnected");
     const [client, setClient] = useState(null);
+    const [hasZoomed, setHasZoomed] = useState(false);
 
     const connectToBroker = () => {
         if (client) client.end(true);
@@ -132,7 +133,7 @@ function MapTracker() {
                                     📍 Lat: {position.lat.toFixed(7)}, Lng: {position.lng.toFixed(7)}
                                 </Popup>
                             </Marker>
-                            <RecenterMap position={position} />
+                            <RecenterMap position={position} hasZoomed={hasZoomed} setHasZoomed={setHasZoomed} />
                         </>
                     )}
                 </MapContainer>
@@ -143,14 +144,15 @@ function MapTracker() {
     );
 }
 
-function RecenterMap({ position }) {
+function RecenterMap({ position, hasZoomed, setHasZoomed }) {
     const map = useMap();
 
     useEffect(() => {
-        if (position.lat !== 0 && position.lng !== 0) {
-            map.setView(position, 15, { animate: true });
+        if (!hasZoomed && position.lat !== 0 && position.lng !== 0) {
+            map.setView(position, 17, { animate: true });
+            setHasZoomed(true); // <-- zoom only once
         }
-    }, [position, map]);
+    }, [position, hasZoomed, setHasZoomed, map]);
 
     return null;
 }
